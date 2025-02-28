@@ -73,14 +73,34 @@ This repository contains a simple backend service for managing trade orders. The
 
 2. **Configure Security Groups**
 - **Allow inbound SSH (port 22) so that GitHub Actions can connect**
-- **For testing. you might temporarily allow `0.0.0.0/0` (open to all)**
+- **For testing you might temporarily allow `0.0.0.0/0` (open to all)**
 
 3. **Set Up GitHub Secrets**
 
-    In your respository settings, add the following secrets: 
+    **In your respository settings, add the following secrets:**
 
     | Secret Name  | Description                        |
     |-------------|------------------------------------|
     | `EC2_HOST`  | Public IP of your EC2 instance    |
     | `EC2_USER`  | `ubuntu` (default SSH user)       |
     | `EC2_SSH_KEY` | Private key for SSH access      |
+
+## Deployment via GitHub Actions
+
+**On every push to main or pull request merging to main, GutHub Actions will:**
+- **SSH into the EC2 instance**
+- **Stop the existing container**
+- **Build and deploy the latest version**
+
+**Deployment Commands (Executed via CI/CD)**
+    
+    ```bash
+    script: |
+        cd /path/to/your/project
+        sudo docker stop trade-orders-api || true
+        sudo docker rm trade-orders-api || true
+        sudo docker build -t trade-orders-api .
+        sudo docker run -d -p 8000:8000 --name trade-orders-api trade-orders-api
+
+📌 Live API: http://18.116.118.248:8000/docs
+
