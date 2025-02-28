@@ -41,11 +41,12 @@ This repository contains a simple backend service for managing trade orders. The
     uvicorn app.main:app --reload
 
 4. **View API Documentation:**
+    Open your browser to access the interactive Swagger UI:
 
     ```bash
-    Open your browser at http://127.0.0.1:8000/docs to access the interactive Swagger UI.
+    http://127.0.0.1:8000/docs 
 
-## Running Test
+## Running Tests
 
 **Run your test with:**
     
@@ -55,13 +56,14 @@ This repository contains a simple backend service for managing trade orders. The
 ## Docker Setup
 
 **Build the Docker Image**
+    
     ```bash
     docker build -t trade-orders-api .
 
 **Run the Docker Container**
+    
     ```bash
     docker run -d -p 8000:8000 trade-orders-api
-
 
 ## Deployment on AWS EC2
 
@@ -75,10 +77,10 @@ This repository contains a simple backend service for managing trade orders. The
 
 3. **Set Up GitHub Secrets**
 
-In your respository settings, add the following secrets: 
+    In your respository settings, add the following secrets: 
 
-| Secret Name  | Description                        |
-|-------------|------------------------------------|
-| `EC2_HOST`  | Public IP of your EC2 instance    |
-| `EC2_USER`  | `ubuntu` (default SSH user)       |
-| `EC2_SSH_KEY` | Private key for SSH access      |
+    | Secret Name  | Description                        |
+    |-------------|------------------------------------|
+    | `EC2_HOST`  | Public IP of your EC2 instance    |
+    | `EC2_USER`  | `ubuntu` (default SSH user)       |
+    | `EC2_SSH_KEY` | Private key for SSH access      |
