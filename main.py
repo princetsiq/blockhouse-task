@@ -26,7 +26,7 @@ engine = create_engine(sqlite_url, connect_args=connect_args)
 async def lifespan(app: FastAPI):
     SQLModel.metadata.create_all(engine)
     yield
-    SQLModel.metadata.drop_all(engine)
+    # SQLModel.metadata.drop_all(engine)
 
 app = FastAPI(lifespan=lifespan)
 
