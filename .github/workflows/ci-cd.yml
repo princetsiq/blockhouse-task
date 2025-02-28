@@ -55,3 +55,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker stop trade-order-api || true
+            docker rm trade-order-api || true
+            docker build -t trade-order-api .
+            docker run -d -p 8000:8000 --name trade-order-api trade-order-api
