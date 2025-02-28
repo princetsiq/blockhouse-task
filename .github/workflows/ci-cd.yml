@@ -54,10 +54,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Navigate to your application directory if needed (e.g., cd /home/ubuntu/blockhouse-task)
-            # Stop and remove the old container if it's running
             docker stop trade-order-api || true
             docker rm trade-order-api || true
-            # Build and run the new container
             docker build -t trade-order-api .
             docker run -d -p 8000:8000 --name trade-order-api trade-order-api
