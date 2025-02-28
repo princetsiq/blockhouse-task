@@ -26,9 +26,9 @@ This repository contains a simple backend service for managing trade orders. The
 
 1. **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/yourusername/trade-orders-api.git
-   cd trade-orders-api
+    ```bash
+    git clone https://github.com/yourusername/trade-orders-api.git
+    cd trade-orders-api
 
 2. **Install dependencies:**
 
@@ -40,27 +40,26 @@ This repository contains a simple backend service for managing trade orders. The
     ```bash
     uvicorn app.main:app --reload
 
-4. **View API Documentation:**
-    Open your browser to access the interactive Swagger UI:
+4. **View API Documentation (Open your browser to access the interactive Swagger UI):**
 
     ```bash
     http://127.0.0.1:8000/docs 
 
 ## Running Tests
 
-**Run your test with:**
+* **Run your test with:**
     
     ```bash
     pytest
 
 ## Docker Setup
 
-**Build the Docker Image**
+* **Build the Docker Image**
     
     ```bash
     docker build -t trade-orders-api .
 
-**Run the Docker Container**
+* **Run the Docker Container**
     
     ```bash
     docker run -d -p 8000:8000 trade-orders-api
@@ -87,14 +86,14 @@ This repository contains a simple backend service for managing trade orders. The
 
 ## Deployment via GitHub Actions
 
-**On every push to main or pull request merging to main, GutHub Actions will:**
+* **On every push to main or pull request merging to main, GutHub Actions will:**
 - **SSH into the EC2 instance**
 - **Stop the existing container**
 - **Build and deploy the latest version**
 
-**Deployment Commands (Executed via CI/CD)**
+* **Deployment Commands (Executed via CI/CD)**
     
-    ```bash
+    ```yaml
     script: |
         cd /path/to/your/project
         sudo docker stop trade-orders-api || true
