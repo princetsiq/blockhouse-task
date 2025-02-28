@@ -70,6 +70,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
+          port: 8000
           script: |
             docker stop trade-order-api || true
             docker rm trade-order-api || true
