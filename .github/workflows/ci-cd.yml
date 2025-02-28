@@ -57,7 +57,7 @@ jobs:
 
       - name: Debug secrets
         run: |
-          if [ -z "${{ secrets.EC2_USER }}" ]; then
+          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then
             echo "MY_SECRET is EMPTY or NOT FOUND"
           else
             echo "MY_SECRET is present (masked in logs)."
