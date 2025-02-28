@@ -55,6 +55,15 @@ jobs:
         run: |
           docker build -t trade-order-api .
 
+      - name: Debug secrets
+        run: |
+          if [ -z "${{ secrets.EC2_HOST }}" ]; then
+            echo "MY_SECRET is EMPTY or NOT FOUND"
+          else
+            echo "MY_SECRET is present (masked in logs)."
+          fi
+            
+
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
