@@ -1,18 +1,12 @@
 name: CI/CD Pipeline
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build-and-test:
@@ -55,23 +49,9 @@ jobs:
         run: |
           docker build -t trade-order-api .
 
-      - name: Debug secrets
-        run: |
-          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then
-            echo "MY_SECRET is EMPTY or NOT FOUND"
-          else
-            echo "MY_SECRET is present (masked in logs)."
-          fi
-            
-
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.1
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
+          username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          # script: |
-          #   docker stop trade-order-api || true
-          #   docker rm trade-order-api || true
-          #   docker build -t trade-order-api .
-          #   docker run -d -p 8000:8000 --name trade-order-api trade-order-api
