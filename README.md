@@ -5,12 +5,14 @@ This repository contains a simple backend service for managing trade orders. The
 ## Features
 
 - **REST API Endpoints**
-  - `POST /orders`: Submit trade orders (symbol, price, quantity, order type).
-  - `GET /orders`: Retrieve all submitted orders.
-- **Data Storage:** Uses SQLite.
-- **Containerization:** Dockerfile for containerizing the application.
-- **CI/CD Pipeline:** Automated tests, Docker image build, and deployment to an AWS EC2 instance via GitHub Actions.
+  - `POST /orders`: Submit trade orders (symbol, price, quantity, order type)
+  - `GET /orders`: Retrieve all submitted orders
+- **Data Storage:** Uses SQLite
+- **Containerization:** Dockerfile for containerizing the application
+- **CI/CD Pipeline:** Automated tests, Docker image build, and deployment to an AWS EC2 instance via GitHub Actions
 - **API Documentation:** Swagger/OpenAPI documentation available at `/docs` when running locally
+
+---
 
 ## Getting Started
 
@@ -18,8 +20,8 @@ This repository contains a simple backend service for managing trade orders. The
 
 - **Python 3.9+**
 - **Docker**
-- **AWS EC2 instance** (Ubuntu recommended) with Docker installed and SSH access configured.
-- **GitHub repository** with GitHub Actions enabled.
+- **AWS EC2 instance** (Ubuntu recommended) with Docker installed and SSH access configured
+- **GitHub repository** with GitHub Actions enabled
 
 ### Local Setup
 
@@ -39,10 +41,10 @@ This repository contains a simple backend service for managing trade orders. The
     ```bash
     uvicorn app.main:app --reload
 
-4. **View API Documentation (Open your browser to access the interactive Swagger UI):**
+4. **View API Documentation:**
+    Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to access the interactive Swagger UI.
 
-    ```bash
-    http://127.0.0.1:8000/docs 
+---
 
 ## Running Tests
 
@@ -75,7 +77,7 @@ This repository contains a simple backend service for managing trade orders. The
 
 3. **Set Up GitHub Secrets**
 
-    In your respository settings, add the following secrets:
+    In your repository settings, add the following secrets:
 
     | Secret Name  | Description                        |
     |-------------|------------------------------------|
@@ -85,7 +87,7 @@ This repository contains a simple backend service for managing trade orders. The
 
 ## Deployment via GitHub Actions
 
-* **On every push to main or pull request merging to main, GutHub Actions will:**
+* **On every push to main or pull request merging to main, GitHub Actions will:**
     - SSH into the EC2 instance
     - Stop the existing container
     - Build and deploy the latest version
@@ -99,12 +101,10 @@ This repository contains a simple backend service for managing trade orders. The
         sudo docker rm trade-orders-api || true
         sudo docker build -t trade-orders-api .
         sudo docker run -d -p 8000:8000 --name trade-orders-api trade-orders-api
-
+    
 📌 Live API: http://18.116.118.248:8000/docs
 
 ## API Endpoints
-
-📌 **Base URL:** [http://18.116.118.248:8000](http://18.116.118.248:8000)
 
 ### 📌 Create a Trade Order
 **POST /orders**
@@ -144,3 +144,4 @@ This repository contains a simple backend service for managing trade orders. The
     "order_type": "buy"
   }
 ]
+```
