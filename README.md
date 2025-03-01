@@ -126,7 +126,7 @@ This repository contains a simple backend service for managing trade orders. The
 }
 ```
 
-### 📌 Get All Trade Orders
+### Get All Trade Orders
 **GET /orders**
 
 #### **Response (200 OK):**
