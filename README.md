@@ -7,8 +7,7 @@ This repository contains a simple backend service for managing trade orders. The
 - **REST API Endpoints**
   - `POST /orders`: Submit trade orders (symbol, price, quantity, order type).
   - `GET /orders`: Retrieve all submitted orders.
-- **Data Storage:** Uses SQLite (or PostgreSQL for production-like environments).
-- **Optional Bonus:** WebSocket support for real-time order status updates.
+- **Data Storage:** Uses SQLite.
 - **Containerization:** Dockerfile for containerizing the application.
 - **CI/CD Pipeline:** Automated tests, Docker image build, and deployment to an AWS EC2 instance via GitHub Actions.
 - **API Documentation:** Swagger/OpenAPI documentation available at `/docs` when running locally
@@ -67,16 +66,16 @@ This repository contains a simple backend service for managing trade orders. The
 ## Deployment on AWS EC2
 
 1. **Create an EC2 Instance**
-- **Choose Ubuntu as the OS**
-- **Ensure it has Docker installed**
+    - Choose Ubuntu as the OS
+    - Ensure it has Docker installed
 
 2. **Configure Security Groups**
-- **Allow inbound SSH (port 22) so that GitHub Actions can connect**
-- **For testing you might temporarily allow `0.0.0.0/0` (open to all)**
+    - Allow inbound SSH (port 22) so that GitHub Actions can connect
+    - For testing you might temporarily allow `0.0.0.0/0` (open to all)
 
 3. **Set Up GitHub Secrets**
 
-    **In your respository settings, add the following secrets:**
+    In your respository settings, add the following secrets:
 
     | Secret Name  | Description                        |
     |-------------|------------------------------------|
@@ -87,9 +86,9 @@ This repository contains a simple backend service for managing trade orders. The
 ## Deployment via GitHub Actions
 
 * **On every push to main or pull request merging to main, GutHub Actions will:**
-- **SSH into the EC2 instance**
-- **Stop the existing container**
-- **Build and deploy the latest version**
+    - SSH into the EC2 instance
+    - Stop the existing container
+    - Build and deploy the latest version
 
 * **Deployment Commands (Executed via CI/CD)**
     
@@ -103,3 +102,45 @@ This repository contains a simple backend service for managing trade orders. The
 
 📌 Live API: http://18.116.118.248:8000/docs
 
+## API Endpoints
+
+📌 **Base URL:** [http://18.116.118.248:8000](http://18.116.118.248:8000)
+
+### 📌 Create a Trade Order
+**POST /orders**
+
+#### **Request Body (JSON):**
+```json
+{
+  "symbol": "AAPL",
+  "price": 150.25,
+  "quantity": 10,
+  "order_type": "buy"
+}
+```
+
+#### **Response (200 OK):** 
+```json
+{
+  "order_id": 1,
+  "symbol": "AAPL",
+  "price": 150.25,
+  "quantity": 10,
+  "order_type": "buy"
+}
+```
+
+### 📌 Get All Trade Orders
+**GET /orders**
+
+#### **Response (200 OK):**
+```json
+[
+  {
+    "order_id": 1,
+    "symbol": "AAPL",
+    "price": 150.25,
+    "quantity": 10,
+    "order_type": "buy"
+  }
+]
