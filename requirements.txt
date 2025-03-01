@@ -3,3 +3,6 @@ uvicorn
 sqlmodel
 pytest
 httpx
+pytest
+pydantic
+docker
