@@ -1,3 +1,5 @@
+<!-- My name is Prince Tsiquaye -->
+
 # Trade Orders API
 
 This repository contains a simple backend service for managing trade orders. The project demonstrates a complete DevOps pipeline, including a REST API, Docker containerization, deployment to an AWS EC2 instance, and a CI/CD workflow using GitHub Actions.
