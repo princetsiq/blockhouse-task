@@ -12,8 +12,6 @@ This repository contains a simple backend service for managing trade orders. The
 - **CI/CD Pipeline:** Automated tests, Docker image build, and deployment to an AWS EC2 instance via GitHub Actions
 - **API Documentation:** Swagger/OpenAPI documentation available at `/docs` when running locally
 
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -43,8 +41,6 @@ This repository contains a simple backend service for managing trade orders. The
 
 4. **View API Documentation:**
     Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to access the interactive Swagger UI.
-
----
 
 ## Running Tests
 
@@ -106,7 +102,7 @@ This repository contains a simple backend service for managing trade orders. The
 
 ## API Endpoints
 
-### 📌 Create a Trade Order
+### Create a Trade Order
 **POST /orders**
 
 #### **Request Body (JSON):**
