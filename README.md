@@ -37,7 +37,7 @@ This repository contains a simple backend service for managing trade orders. The
 3. **Run the Application:**
 
     ```bash
-    uvicorn app.main:app --reload
+    uvicorn main:app --reload
 
 4. **View API Documentation:**
     Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to access the interactive Swagger UI.
